@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="Evaluación diagnóstica de Introducción al Desarrollo Front End con HTML, CSS y JavaScript" />
+        <meta name="keywords" content="HTML, CSS, JavaScript" />
+        <meta name="author" content="Daniela Huilipan" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="style.css" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"
+            integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <title>Patrones geométricos y la simetria</title>
+    </head>
+    
+    <body>
+        <div id="uno"><strong><a href="index.html">PORTADA</a></strong></div>
+        <div id="otro"><a href="page_1.html">01</a> / <a href="page_2.html">02</a> / <a href="page_3.html">03</a></div>
+
+<div class="especial text-center">
+   <h1>PATRONES GEOMÉTRICOS Y LA SIMETRIA</h1>
+     <h4><span id="saludo"></span> Mi nombre es Daniela y hoy te quiero enseñar un poco sobre los patrones geométricos. ¡Comencemos!</h4>
+</div>
+
+<div>
+<h2>¿Qué es un patrón geométrico?</h2>
+   <p> Un patrón geométrico es un tipo de <b>patrón</b> basado principalmente en <b>figuras geométricas simples.</b> Un <b>patrón es un motivo, un dibujo o cualquier tipo de diseño</b> que se usa como <b>modelo de crecimiento</b> para expandirlo en la dirección que se requiera.  Su uso como plantilla o modelo en forma de secuencias de imágenes permite obtener nuevos objetos.</p>
+</div>
+
+<div >
+<h2>Origen: Arte Óptico.</h2>
+
+<p>El <i>Op Art</i> es un movimiento artístico que surge a finales de los años 50 y tiene su máximo esplendor en la década de los años 60. Es una abreviación de Optical Art, que en español sería Arte Óptico, y un perfecto exponente del arte geométrico.</p>
+<p>Esta corriente se propone <b>producir efectos visuales de relieve, profundidad o movimiento mediante líneas y colores planos y estáticos.</b> Crea efectos visuales tales como movimiento aparente, vibración, parpadeo o difuminación. Se suele valer de líneas paralelas, tanto rectas como sinuosas, contrastes cromáticos marcados, ya sea poli o bicromáticos. <a href="https://www.locura-geometrica.com/arte-diseno-estilo-geometrico/que-es-el-op-art/">Seguir aprendiendo</a></p>
+</div>
+
+<div class="text-center">
+<h3>¡Te invito a revisar y disfrutar de los ejemplos que he seleccionado para ti!. Puedes encontrarlos en la parte superior de esta pagina.</h3>
+</div>
+
+        <script>
+        var opciones = ["Hola.","Buenas.","Bonjour.","Hello.","Ciao."];
+            function setup() {
+                createCanvas(windowWidth - 50, windowHeight - 50)
+                    .position(25, 30)
+                    .style("z-index", -1);
+                    document.getElementById("saludo").textContent += random(opciones);
+
+                    btn = createButton('descargar');
+                    btn.position(115,8);
+                    btn.mousePressed(impresora);
+            }
+            function draw() {
+                background(12,207,160);
+                fill(209,26,18);
+                textSize(40);
+                text("🖌",mouseX,mouseY);
+                fill(20);
+                ellipse(mouseX+20, mouseY+20, 40, 5);
+            }
+            function windowResized() {
+                resizeCanvas(windowWidth - 50, windowHeight - 50);
+            }
+
+            function impresora() {
+              saveCanvas("imagen", "jpg");
+            }
+        </script>
+    </body>
+</html>

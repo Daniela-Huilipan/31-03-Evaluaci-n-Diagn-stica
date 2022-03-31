@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="Evaluación diagnóstica de Introducción al Desarrollo Front End con HTML, CSS y JavaScript" />
+        <meta name="keywords" content="HTML, CSS, JavaScript" />
+        <meta name="author" content="Daniela Huilipan" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="style.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js" integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <title>Patrones simétricos</title>
+    </head>
+    <body>
+        <div id="uno"><a href="index.html">PORTADA</a></div>
+        <div id="otro"><a href="page_1.html">01</a> / <strong><a href="page_2.html">02</a></strong> / <a href="page_3.html">03</a></div>
+        <script>
+        let theta;
+
+function setup() {
+  createCanvas(windowWidth - 50, windowHeight - 50)
+      .position(25, 30)
+      .style("z-index", -1);
+
+      btn = createButton('descargar');
+      btn.position(115,8);
+      btn.mousePressed(impresora);
+}
+
+function draw() {
+background(5,124,95);
+frameRate(30);
+stroke(255);
+// Let's pick an angle 0 to 90 degrees based on the mouse position
+let a = (mouseX / width) * 90;
+// Convert it to radians
+theta = radians(a);
+// Start the tree from the bottom of the screen
+translate(width/2,height);
+// Draw a line 120 pixels
+line(0,0,0,-120);
+// Move to the end of that line
+translate(0,-120);
+// Start the recursive branching!
+branch(120);
+
+}
+
+function branch(h) {
+// Each branch will be 2/3rds the size of the previous one
+h *= 0.66;
+
+// All recursive functions must have an exit condition!!!!
+// Here, ours is when the length of the branch is 2 pixels or less
+if (h > 2) {
+push();    // Save the current state of transformation (i.e. where are we now)
+rotate(theta);   // Rotate by theta
+line(0, 0, 0, -h);  // Draw the branch
+translate(0, -h); // Move to the end of the branch
+branch(h);       // Ok, now call myself to draw two new branches!!
+pop();     // Whenever we get back here, we "pop" in order to restore the previous matrix state
+
+// Repeat the same thing, only branch off to the "left" this time!
+push();
+rotate(-theta);
+line(0, 0, 0, -h);
+translate(0, -h);
+branch(h);
+pop();
+}
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth - 50, windowHeight - 50);
+}
+
+function impresora() {
+  saveCanvas("imagen", "jpg");
+}
+
+        </script>
+    </body>
+</html>
